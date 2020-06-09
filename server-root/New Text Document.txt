@@ -1,0 +1,9 @@
+Define SRVROOT "C:/xampp/apache"
+
+ServerRoot "C:/xampp/apache"
+
+
+
+
+DocumentRoot "C:/xampp/htdocs"
+<Directory "C:/xampp/htdocs">

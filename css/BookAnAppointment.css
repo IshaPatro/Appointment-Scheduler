@@ -1,0 +1,89 @@
+/* start Appointment Form */
+.form {
+  box-shadow:  0px 2px 6px -1px rgba(0,0,0,.12);
+  margin-top:5%;
+  margin-bottom:10%;
+}
+.my-form{
+  padding: 5%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 0%;
+  background-color: #fff;
+  box-shadow: 20px 20px 5px 5px #222222;
+}
+.image img {
+  width: 520px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  height:100%;
+  box-shadow: 20px 20px 5px 5px #222222;
+}
+/* end Appointment Form */
+
+/* start input form */
+input, select, .form-control{
+  background-color: #bfbfbf;
+  border-radius: 45px;
+  font-size: 15px;
+  height: 40px;
+  border: none;
+  padding-left: 15px;
+  width:100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  outline: none;
+  color: #4d4d4d;
+}
+input::placeholder {
+ color: #4d4d4d;
+}
+input:active, input:link, input:visited, input:hover,
+select:active, select:link, select:visited, select:hover{
+  height: 50px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+}
+select{
+  color: #4d4d4d;
+  font-size: 15px;
+  font-weight: 500;
+}
+label{
+  background-color: #bfbfbf;
+  border-radius: 45px;
+  font-size: 15px;
+  height: 40px;
+  border: none;
+  padding-left: 15px;
+  width:100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  outline: none;
+  color: #4d4d4d;
+}
+/* end input form */
+
+/* start button */
+.book-an-appointment {
+  border-color:  #fff;
+  color: #fff;
+  width: auto;
+  background: #3498db;
+  font-size: 20px;
+  padding:auto;
+  border-radius: 45px;
+  cursor: pointer;
+  float:right;
+  margin-top:8%;
+  height:50px;
+}
+.book-an-appointment:hover {
+    box-shadow: 0 0 10px 40px  #22232a inset, 0 0 10px 4px  #3498db;
+    color: #656d79;
+}
+/* end button */

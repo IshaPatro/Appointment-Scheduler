@@ -1,0 +1,160 @@
+/* start cards */
+.doc-cards {
+  overflow: hidden;
+  margin-bottom:5%;
+  margin-top:5%;
+  margin-left: 1%;
+}
+
+.filterDiv {
+  display: none; /* Hidden by default */
+}
+
+.show {
+  display: block;
+}
+
+#team .card {
+    border: none;
+    background: #ffffff;
+}
+
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+    transform: rotateY(0deg);
+    border-radius: .25rem;
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+    transform: rotateY(180deg);
+}
+
+.fa-map-marker{
+  color:#28a7e9;
+}
+
+.mainflip {
+    transition: 1s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.frontside {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.backside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    transform: rotateY(-180deg);
+    box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+}
+
+.frontside,
+.backside {
+    backface-visibility: hidden;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+
+.frontside .card,
+.backside .card {
+    height: 450px;
+    width: 350px;
+}
+
+.frontside .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.card-title{
+  color:#28a7e9;
+}
+.card-text{
+  color: #303030;
+}
+.description{
+  color: #303030;
+  text-align: left;
+}
+.checked {
+  color: orange;
+}
+.fa fa-star{
+  border-color: orange;
+}
+/* end cards */
+
+/* start button */
+.book-an-appointment {
+  border-color:  #fff;
+  color: #fff;
+  width: auto;
+  background: #3498db;
+  font-size: 20px;
+  padding:auto;
+  border-radius: 45px;
+  cursor: pointer;
+  float:right;
+  margin-top:8%;
+  height:50px;
+}
+.book-an-appointment:hover {
+    box-shadow: 0 0 10px 40px  #22232a inset, 0 0 10px 4px  #3498db;
+    color: #656d79;
+}
+/* end button */
+
+
+
+/* start button */
+.service-btn {
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  border: 2px solid black;
+  width: 70px;
+  border-radius: 900px;
+  height: 150px;
+  width: 150px;
+  cursor: pointer;
+  outline:none;
+  background-color: #999999;
+  margin-left:20%;
+  justify-content: center;
+  box-shadow: 10px 10px 5px 5px #222222;
+}
+.service-btn:hover, .service-btn:active, .service-btn:visited{
+  background-color: #28a7e9;
+  outline:none;
+}
+.service-txt{
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+  text-align: center;
+  margin-top:2%;
+  margin-bottom:15%;
+}
+/* start button */
+.btn{
+  border-color:  #fff;
+  color: #fff;
+  width: auto;
+  background: #3498db;
+  font-size: 20px;
+  padding:auto;
+  border-radius: 45px;
+  cursor: pointer;
+  float:right;
+  margin-top:8%;
+  height:50px;
+}
+.btn:hover {
+    box-shadow: 0 0 10px 40px  #22232a inset, 0 0 10px 4px  #3498db;
+    color: #656d79;
+}
