@@ -5,7 +5,7 @@
 <!-- start navigation -->
 <nav class="navbar navbar-light navbar-expand-md navbar-default" role="navigation" id="NavBar">
   <div class="container">
-    <a class="navbar-brand" href="./index.html" id="navbar-brand"><img src="Images/logo.png" height="50" width="65" />APPOI</a>
+    <a class="navbar-brand" href="./index.html" id="navbar-brand"><img src="../Images/logo.png" height="50" width="65" />APPOI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" ><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="Navbar">
       <ul class="navbar-nav ml-auto">
@@ -21,7 +21,7 @@
 </nav>
 <!-- end navigation -->
 
-<image src="Images/service.png" width="100%">
+<image src="../Images/service.png" width="100%">
 <br><br><br><br><br><br><br>
 <style>
 .filterDiv{
@@ -32,31 +32,31 @@
 <div class="row">
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/doctor.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/doctor.png');"></button>
       <p class="service-txt"> Doctor </p>
     </div>
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/plumber.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/plumber.png');"></button>
       <p class="service-txt"> Plumber </p>
     </div>
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/police.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/policeman.png');"></button>
       <p class="service-txt"> Policeman </p>
     </div>
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/teacher.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/teacher.png');"></button>
       <p class="service-txt"> Teacher </p>
     </div>
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/lawyer.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/lawyer.png');"></button>
       <p class="service-txt"> Lawyer </p>
     </div>
   </div>
@@ -64,31 +64,31 @@
 <div class="row">
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/artist.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/artist.png');"></button>
       <p class="service-txt"> Artist </p>
     </div>
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/colleagues.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/colleagues.png');"></button>
       <p class="service-txt"> Colleagues </p>
     </div>
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/electrician.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/electrician.png');"></button>
       <p class="service-txt"> Electrician </p>
     </div>
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/consultant.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/consultant.png');"></button>
       <p class="service-txt"> Consultant </p>
     </div>
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/esthetician.png');"></button>
+      <button class="service-btn" style="background-image: url('../Images/Services/esthetician.png');"></button>
       <p class="service-txt"> Esthetician </p>
     </div>
   </div>
@@ -104,21 +104,19 @@
 
 
       <?php
-      require_once("../connection.php");
-if(isset($_GET['select'])){
-  $select = $_GET['select'];
-}else{
-  $select="Doctor";
-}
-      if($data){
-        $query ="select * from `clients-data` where Service='".$select."';";
-        // echo $query;
-        $result = mysqli_query($con,$query);
+        require_once("../connection.php");
+        if(isset($_GET['select'])){
+          $select = $_GET['select'];
+        }else{
+          $select="Doctor";
+        }
+        if($data){
+          $query ="select * from `clientData` where Service='".$select."';";
+          // echo $query;
+          $result = mysqli_query($con,$query);
 
-        while($row = mysqli_fetch_assoc($result)) {
-
-
-        ?>
+          while($row = mysqli_fetch_assoc($result)) {
+      ?>
 
 <style>
 .detailButton{
@@ -127,22 +125,36 @@ if(isset($_GET['select'])){
 </style>
 
         <!-- start Doctor -->
-        <div class="col-xs-12 col-sm-6 col-md-4" style="float:left;">
+        <div class="col-xs-11 col-sm-5 col-md-3" style="float:left; margin-left:5%;">
             <div class="image-flip">
                 <div class="mainflip">
                     <div class="frontside">
                         <div class="card">
                             <div class="card-body text-center">
-                                <p><img class=" img-fluid" src="Images/Doctors/Gynecologist02.png" alt="card image"></p>
-                                <h4 class="card-title"><?php echo $row['Name'] ?> </h4>
+                                  <?php
+                                    $name1=substr($row['Name'],3);
+                                    $image='../Images/Services/'.strtolower($row['Service']).'.png';
+
+                                    if(!file_exists($image)){
+                                      $image='../Images/customer-default.jpg';
+                                    }
+
+                                  ?>
+                                <p><img class="img-fluid" src="<?php echo htmlspecialchars($image); ?>" alt="card image"></p>
+                                <h4 class="card-title"><?php echo $row['Name']; ?> </h4>
                                 <p class="card-text" style="font-size: 18px;"><?php echo $row['Service']; ?></p>
                                 <p class="card-text" style="font-size: 15px;"><?php echo$row['Experience']. " of Experience"; ?></p>
                                 <p class="card-text" style="font-size: 12px;"><i class="fa fa-map-marker"></i><?php echo $row['Address']; ?></p>
-                                <span class="fa fa-star fa-2x checked"></span>
-                                <span class="fa fa-star fa-2x checked"></span>
-                                <span class="fa fa-star fa-2x checked"></span>
-                                <span class="fa fa-star fa-2x checked"></span>
-                                <span class="fa fa-star fa-2x "></span>
+                                <?php
+                                for($i=0;$i<$row['Rating'];$i++){
+                                  ?>
+                                        <span class="fa fa-star fa-2x checked"></span>
+                                  <?php
+
+                                }
+
+                            ?>
+                                <!-- <span class="fa fa-star fa-2x "></span> -->
                             </div>
                         </div>
                     </div>
@@ -151,6 +163,16 @@ if(isset($_GET['select'])){
                             <div class="card-body text-center mt-4">
                                 <p class="card-text btn-text">
                                   <p style="color:black" > Select a Time Slot</p>
+                                    <?php
+
+                                    for($i=1;$i<=9;$i++){
+                                      $time='TimeSlot'.$i;
+                                      $time1='Time Slot'.$i;
+
+
+                                      ?>
+
+
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -161,95 +183,15 @@ if(isset($_GET['select'])){
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot1:'])); ?></button>
-                                  <button style=" color: #fff;
-                                                  width: 30%;
-                                                  background: #bfbfbf;
-                                                  font-size: 20px;
-                                                  padding:auto;
-                                                  margin-right:3%;
-                                                  border: none;
-                                                  border-radius: 25px;
-                                                  cursor: pointer;
-                                                  float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot2:'])); ?></button>
-                                  <button style=" color: #fff;
-                                                  width: 30%;
-                                                  background: #bfbfbf;
-                                                  font-size: 20px;
-                                                  padding:auto;
-                                                  margin-right:3%;
-                                                  border: none;
-                                                  border-radius: 25px;
-                                                  cursor: pointer;
-                                                  float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot3:'])); ?></button>
-                                  <button style=" color: #fff;
-                                                  width: 30%;
-                                                  background: #bfbfbf;
-                                                  font-size: 20px;
-                                                  padding:auto;
-                                                  margin-right:3%;
-                                                  border: none;
-                                                  border-radius: 25px;
-                                                  cursor: pointer;
-                                                  float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot4:'])); ?></button>
-                                  <button style=" color: #fff;
-                                                  width: 30%;
-                                                  background: #bfbfbf;
-                                                  font-size: 20px;
-                                                  padding:auto;
-                                                  margin-right:3%;
-                                                  border: none;
-                                                  border-radius: 25px;
-                                                  cursor: pointer;
-                                                  float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot5:'])); ?></button>
-                                  <button style=" color: #fff;
-                                                  width: 30%;
-                                                  background: #bfbfbf;
-                                                  font-size: 20px;
-                                                  padding:auto;
-                                                  margin-right:3%;
-                                                  border: none;
-                                                  border-radius: 25px;
-                                                  cursor: pointer;
-                                                  float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot6:'])); ?></button>
-                                  <button style=" color: #fff;
-                                                  width: 30%;
-                                                  background: #bfbfbf;
-                                                  font-size: 20px;
-                                                  padding:auto;
-                                                  margin-right:3%;
-                                                  border: none;
-                                                  border-radius: 25px;
-                                                  cursor: pointer;
-                                                  float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot7:'])); ?></button>
-                                  <button style=" color: #fff;
-                                                  width: 30%;
-                                                  background: #bfbfbf;
-                                                  font-size: 20px;
-                                                  padding:auto;
-                                                  margin-right:3%;
-                                                  border: none;
-                                                  border-radius: 25px;
-                                                  cursor: pointer;
-                                                  float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot8:'])); ?></button>
-                                  <button style=" color: #fff;
-                                                  width: 30%;
-                                                  background: #bfbfbf;
-                                                  font-size: 20px;
-                                                  padding:auto;
-                                                  margin-right:3%;
-                                                  border: none;
-                                                  border-radius: 25px;
-                                                  cursor: pointer;
-                                                  float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot9:'])); ?></button>
+                                                  margin-top:8%;" class="timeBtn" data-slot="<?php echo htmlspecialchars($time1,ENT_QUOTES); ?>" ><?php echo date("H:i", strtotime($row[$time])); ?></button>
+
+                                                <?php
+
+                                                }
+
+
+                                                ?>
+
                                 </p>
                                 <button style=" color: #fff;
                                                 width: 80%;
@@ -276,6 +218,17 @@ if(isset($_GET['select'])){
         <!-- end Doctor -->
 
 <script>
+var time;
+var slot;
+var timeButton = document.getElementsByClassName("timeBtn");
+for(var i=0;i<timeButton.length;i++){
+  timeButton[i].addEventListener("click",function(){
+     slot=(this).dataset.slot;
+time=this.innerHTML;
+console.log(time);
+  });
+}
+
 
 
 var btn = document.getElementsByClassName("detailButton");
@@ -284,8 +237,12 @@ for(var i=0;i<btn.length;i++){
     btn[i].addEventListener("click",function(){
       console.log(this);
 var id= (this).dataset.id;
-window.location='./BookAnAppointment.php?id='+id;
 
+if(time!==undefined){
+window.location='./BookAnAppointment.php?id='+id+'&time='+time+'&slot='+slot;
+}else{
+alert('Please select time!');
+}
     });
 }
 
@@ -313,6 +270,7 @@ for(var i=0;i<btnText.length;i++){
     })
   }
 }
+
 
 
 

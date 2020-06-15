@@ -1,5 +1,6 @@
 <?php include('header.php'); ?>
 <link rel="stylesheet" href="css/Service.css">
+<link rel="stylesheet" href="css/main.css">
 
 <!-- start navigation -->
 <nav class="navbar navbar-light navbar-expand-md navbar-default" role="navigation" id="NavBar">
@@ -10,7 +11,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" href="Home.php"> HOME</a></li>
         <li class="nav-item"><a class="nav-link" href="About.php"> ABOUT</a></li>
-        <li class="nav-item active"><a class="nav-link" href="Services.php" style="color: #28a7e9;"> SERVICES</a></li>
+        <li class="nav-item active"><a class="nav-link" href="Service.php" style="color: #28a7e9;"> SERVICES</a></li>
         <li class="nav-item"><a class="nav-link" href="Contact.php"> CONTACT</a></li>
         <a href="./Login.php" class="btn btn-default log-in" type="button" id="log">LOG-IN</a>
       </ul>
@@ -42,7 +43,7 @@
   </div>
   <div class="col">
     <div class="services">
-      <button class="service-btn" style="background-image: url('Images/Services/police.png');"></button>
+      <button class="service-btn" style="background-image: url('Images/Services/policeman.png');"></button>
       <p class="service-txt"> Policeman </p>
     </div>
   </div>
@@ -109,7 +110,7 @@
           $select="Doctor";
         }
       if($data){
-        $query ="select * from `clients-data` where Service='".$select."';";
+        $query ="select * from `clientData` where Service='".$select."';";
         // echo $query;
         $result = mysqli_query($con,$query);
 
@@ -131,7 +132,16 @@
                     <div class="frontside">
                         <div class="card">
                             <div class="card-body text-center">
-                                <p><img class=" img-fluid" src="Images/Doctors/Gynecologist02.png" alt="card image"></p>
+                              <?php
+                                $name1=substr($row['Name'],3);
+                                $image='Images/Services/'.strtolower($row['Service']).'.png';
+
+                                if(!file_exists($image)){
+                                  $image='Images/customer-default.jpg';
+                                }
+
+                              ?>
+                                <p><img class=" img-fluid" src="<?php echo htmlspecialchars($image); ?>" alt="card image"></p>
                                 <h4 class="card-title"><?php echo $row['Name'] ?> </h4>
                                 <p class="card-text" style="font-size: 18px;"><?php echo $row['Service']; ?></p>
                                 <p class="card-text" style="font-size: 15px;"><?php echo$row['Experience']. " of Experience"; ?></p>
@@ -159,7 +169,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot1:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot1'])); ?></button>
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -170,7 +180,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot2:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot2'])); ?></button>
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -181,7 +191,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot3:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot3'])); ?></button>
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -192,7 +202,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot4:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot4'])); ?></button>
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -203,7 +213,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot5:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot5'])); ?></button>
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -214,7 +224,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot6:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot6'])); ?></button>
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -225,7 +235,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot7:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot7'])); ?></button>
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -236,7 +246,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot8:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot8'])); ?></button>
                                   <button style=" color: #fff;
                                                   width: 30%;
                                                   background: #bfbfbf;
@@ -247,7 +257,7 @@
                                                   border-radius: 25px;
                                                   cursor: pointer;
                                                   float:left;
-                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['Time Slot9:'])); ?></button>
+                                                  margin-top:8%;"><?php echo date("H:i", strtotime($row['TimeSlot9'])); ?></button>
                                 </p>
                                 <button style=" color: #fff;
                                                 width: 80%;

@@ -5,7 +5,7 @@
 <!-- start navigation -->
 <nav class="navbar navbar-light navbar-expand-md navbar-default" role="navigation" id="NavBar">
   <div class="container">
-    <a class="navbar-brand" href="./index.html" id="navbar-brand"><img src="Images/logo.png" height="50" width="65" />APPOI</a>
+    <a class="navbar-brand" href="./index.html" id="navbar-brand"><img src="../Images/logo.png" height="50" width="65" />APPOI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" ><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="Navbar">
       <ul class="navbar-nav ml-auto">
@@ -38,7 +38,7 @@
 <!-- end main heading -->
 
 <br><br><br><br><br><br><br>
-<image src="Images/home-img.png" class="mx-auto d-block" width="850" >
+<image src="../Images/home-img.png" class="mx-auto d-block" width="850" >
 <br><br><br><br><br><br><br>
 
 <!-- start feedback -->
@@ -46,7 +46,7 @@
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="card">
         <div class="card-body text-center">
-            <p><img class="img-fluid" src="Images/Doctors/Dermatologist01.png" alt="card image"></p>
+            <p><img class="img-fluid" src="../Images/Doctors/Dermatologist01.png" alt="card image"></p>
             <h4 class="card-title">Dr Shruti Lakhnpal Tondon</h4>
             <p class="feedback">“I simply love the appoi.com online booking system! I run a small wellness clinic and the appoi.com system saves me time and has streamlined my bookings. My clients really appreciate the convenience of seeing my calendar and booking easy to use and looks professional. I trialled a few different online booking systems but none were as impressive as appoi.com”</p>
         </div>
@@ -55,7 +55,7 @@
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="card">
         <div class="card-body text-center">
-            <p><img class="img-fluid" src="Images/Doctors/lawyer01.jpg" alt="card image"></p>
+            <p><img class="img-fluid" src="../Images/Doctors/lawyer01.jpg" alt="card image"></p>
             <h4 class="card-title">Dr Shruti Lakhnpal Tondon</h4>
             <p class="feedback">““appoi.com is an ace work done by the professionals. I truly appreciate their work because I've trialled it. I'm a land registry lawyer. Previously so many clients used to cancel their appointment as it was pen and paper and now they can book online and come accordingly. This software has not only increased my clients but also lessen my work load and increase my work efficiency.”</p>
         </div>
@@ -64,7 +64,7 @@
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="card">
         <div class="card-body text-center">
-            <p><img class="img-fluid" src="Images/Doctors/Dermatologist03.jpg" alt="card image"></p>
+            <p><img class="img-fluid" src="../Images/Doctors/Dermatologist03.jpg" alt="card image"></p>
             <h4 class="card-title">Dr Shruti Lakhnpal Tondon</h4>
             <p class="feedback">“I simply love the appoi.com online booking system! I run a small wellness clinic and the appoi.com system saves me time and has streamlined my bookings. My clients really appreciate the convenience of seeing my calendar and booking easy to use and looks professional. I trialled a few different online booking systems but none were as impressive as appoi.com”</p>
         </div>

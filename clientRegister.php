@@ -11,20 +11,20 @@ if(!isset($_POST['sub'])){
     header("location:Login.php?match=Passwords do not match");
 }else{
 
-$emailCheck = "select email from client where email='".$_POST['email']."'";
+$emailCheck = "select email from clientdata where email='".$_POST['email']."'";
 $res1 = mysqli_query($con,$emailCheck);
 $result2 = mysqli_fetch_assoc($res1);
 if($result2){
     header("location:Login.php?exist=Email already exist");
 }else{
-$query1 = "SELECT * FROM client ORDER BY ID DESC LIMIT 1";
+$query1 = "SELECT * FROM clientdata ORDER BY ID DESC LIMIT 1";
 $res = mysqli_query($con,$query1);
 $result1=mysqli_fetch_assoc($res);
 
 $count = $result1["Id"]+1;
 
 echo $count;
-$query = "insert into client (Id,Username,Password,email) values (".$count.",'".$_POST['Uname']."','".$_POST['pass1']."','".$_POST['email']."');";
+$query = "insert into clientdata (Id,Username,Password,email) values (".$count.",'".$_POST['Uname']."','".$_POST['pass1']."','".$_POST['email']."');";
 
 if( mysqli_query($con,$query)){
     header("location:Login.php?success=You have been registered successfully!".$result2);

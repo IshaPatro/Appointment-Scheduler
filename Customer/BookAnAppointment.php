@@ -5,7 +5,7 @@
 <!-- start navigation -->
 <nav class="navbar navbar-light navbar-expand-md navbar-default" role="navigation" id="NavBar">
     <div class="container">
-       <a class="navbar-brand" href="./index.html" id="navbar-brand"><img src="Images/logo.png" height="50" width="65">APPOI</a>
+       <a class="navbar-brand" href="./index.html" id="navbar-brand"><img src="../Images/logo.png" height="50" width="65">APPOI</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
            <span class="navbar-toggler-icon"></span>
        </button>
@@ -31,20 +31,16 @@ session_start();
 $appointer_id = $_GET['id'];
   include('../connection.php');
 
-    $sql="SELECT * FROM `clients-data` WHERE Id =". $appointer_id;
+    $sql="SELECT * FROM `clientdata` WHERE Id =". $appointer_id;
 
 
 	$result = $con->query($sql);
 	if ($result->num_rows > 0) {
-	    // output data of each row
 	    while($row  = $result->fetch_assoc()) {
-      // $appointer_id   = $row["Id"];
-      $name=$row['Name'];
+          $name=$row['Name'];
 	        $service 	= $row["Service"];
-	       // $timeslot 	= $row["Timeslot"];
 	        $address 	= $row["Address"];
-	       // $fee = $row["fee"];
-			$userid = $_SESSION['Id'];
+			    $userid = $_SESSION['Id'];
 	    }
 	}
 	$con->close();
@@ -59,7 +55,7 @@ $appointer_id = $_GET['id'];
     <div class="col-md-12">
       <div class="form d-flex justify-content-between">
         <div class="image">
-          <img src="Images/appoint.png">
+          <img src="../Images/appoint.png">
         </div>
         <form action="" class="my-form" method="post" enctype="multipath/form-data">
           <h2 class="font-weight-bold mb-3 " style="color:#000;">BOOK AN <span style="color:#28a7e9;">APPOINTMENT</span></h2>
@@ -133,6 +129,13 @@ $appointer_id = $_GET['id'];
           <div class="row">
             <div class="col">
                 <input name="date" placeholder="Appointment Date" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" value=""/ required>
+                <script language="javascript">
+                  $(document).ready(function () {
+                      $("#date").datepicker({
+                          minDate: 0
+                      });
+                  });
+              </script>
             </div>
             <div class="col">
               <label style="border-radius: 45px;
@@ -154,9 +157,10 @@ $appointer_id = $_GET['id'];
             </div>
 
           <label>
-						  <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+						  <input type="hidden" name="userid" style="visibility:hidden" value="<?php echo $userid; ?>">
 					</label>
-          <button name="submit" class="book-an-appointment">BOOK APPOINTMENT</button>
+          <!-- <button name="submit" class="book-an-appointment">BOOK APPOINTMENT</button> -->
+          <input type="submit" name="bookSubmit" class="book-an-appointment"/>
         </form>
       </div>
     </div>
@@ -169,20 +173,73 @@ $appointer_id = $_GET['id'];
 <!-- confirming booking -->
 <?php
   include('../connection.php');
-  if(isset($_POST['submit'])){
+  if(isset($_POST['bookSubmit'])){
+$time=$_GET['time'];
+$date=$_POST['date'];
 
-  $sql = " INSERT INTO bookings (user_id,title,name,gender,dob,address,email,phn,service,appointer,appointer_id,adate,atime)
-    VALUES ('" . $_POST["userid"] . "','" . $_POST["title"] . "','" . $_POST["name"] . "','" . $_POST["gender"] . "', '" . $_POST["dob"] . "','" . $_POST["address"] . "','". $_POST["email"] . "','". $_POST["number"] . "','". $_POST["service"] . "','". $appointer_id . "','". $_POST["appointer_id"] . "','" . $_POST["date"] . "','". $_POST["time"] . "' )";
+$check="Select * from scheduler where apDate='".$date."' and ClientId='".$_GET['id']."';";
+//echo $check;
+$slot=trim($_GET['slot'],"Time ");
+$checkRes= mysqli_query($con,$check);
+$x=false;
+if(!$checkRes){
+$x=true;
 
-    if ($con->query($sql) === TRUE) {
+}else{
+
+  $row = mysqli_fetch_assoc($checkRes);
+
+  if($row[$slot]!=0){
+   // echo "not doen";
+    ?>
+<script>
+alert("This slot not available already taken!");
+</script>
+    <?php
+  }else{
+    $x=true;
+  }
+
+
+}
+//preg_replace('/^\p{Z}+|\p{Z}+$/u', '', $_GET['slot']);
+
+$query2 = "SELECT * FROM scheduler ORDER BY ID DESC LIMIT 1";
+$res = mysqli_query($con,$query2);
+$result1=mysqli_fetch_assoc($res);
+
+$count = $result1["Id"]+1;
+
+
+
+$sql1="insert into scheduler (Id,ClientId,apDate,".$slot.") values (".$count.",".$_GET['id'].",'".$date."','".$userid."');";
+//echo $sql1;
+if($x){
+
+  $query3 = "SELECT * FROM bookings ORDER BY BookId DESC LIMIT 1";
+  $res1 = mysqli_query($con,$query3);
+  $result2=mysqli_fetch_assoc($res1);
+
+  $count1 = $result2["BookId"]+1;
+
+  $sql = " INSERT INTO bookings (BookId,user_id,title,name,gender,dob,address,email,phn,service,appointer,appointer_id,adate,atime)
+    VALUES (".$count1.",". $userid. ",'" . $_POST["title"] . "','" . $_POST["name"] . "','" . $_POST["gender"] . "', '" . $_POST["dob"] . "','" . $_POST["address"] . "','". $_POST["email"] . "',". $_POST["number"] . ",'". $service . "','".$name."',".$_GET['id'].",'" . $_POST["date"] . "','". $_GET["time"] . "' )";
+echo $sql;
+    if (($con->query($sql) === TRUE) && ($con->query($sql1)) === TRUE) {
         echo "<script>alert('Your booking has been accepted!');</script>";
     } else {
         echo "<script>alert('There was an Error')<script>";
     }
 
+if(mysqli_query($con,$sql1)){
+ // echo "done1";
+}
     $con->close();
   }
+}
 ?>
 <!-- confirming booking -->
 
 <?php include('../footer.php'); ?>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>

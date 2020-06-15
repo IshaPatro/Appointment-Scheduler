@@ -1,0 +1,81 @@
+.card{
+  background-color: #3B3B39;
+  width:100%;
+}
+.card-body{
+  padding:0;
+  padding-right: 6%;
+}
+.img{
+  background-color:#fff;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+.img-fluid {
+    border-radius: 25rem;
+    height: 150px;
+    width: 150px;
+}
+.date-time{
+  background-color:#28a7e9;
+  height:60%;
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
+  padding:0;
+  border: solid 5px #606060;
+  border-top: none;
+  box-shadow: 15px 17px 19px 5px rgb(0,0,0);
+}
+.date-time .card-text{
+  font-weight: 800;
+  margin-top: 0;
+  padding-top: 0;
+  line-height: 1;
+}
+.service{
+  color: #606060;
+  font-family: 'Lobster', cursive;
+  font-weight: 800;
+  font-size: 40px;
+}
+.card-title{
+  margin-top: 10%;
+  font-size: calc(100% + 0.6vw + 0.6vh);
+  font-weight: 200;
+}
+.time{
+  font-size: 32px;
+  font-weight: 600;
+  color:#28a7e9;
+  margin-top:5%;
+  line-height: normal;
+}
+.address{
+  font-size: 20px;
+  padding-left:5px;
+  padding-top:15px;
+}
+.fa-map-marker{
+  color:#28a7e9;
+}
+.accordion{
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  opacity: 0;
+  animation-name: fadeInUp;
+  box-shadow: 15px 17px 19px 5px rgb(0,0,0);
+  margin-top:10%;
+  border-radius: 20px;
+  border: solid 5px #606060;
+  animation-iteration-count: 1;
+}
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}

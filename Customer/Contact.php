@@ -5,7 +5,7 @@
 <!-- start navigation -->
 <nav class="navbar navbar-light navbar-expand-md navbar-default" role="navigation" id="NavBar">
     <div class="container">
-       <a class="navbar-brand" href="./index.html" id="navbar-brand"><img src="Images/logo.png" height="50" width="65">APPOI</a>
+       <a class="navbar-brand" href="./index.html" id="navbar-brand"><img src="../Images/logo.png" height="50" width="65">APPOI</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
            <span class="navbar-toggler-icon"></span>
        </button>
@@ -23,7 +23,7 @@
 </nav>
 <!-- end navigation -->
 
-<image src="Images/contact.png" width="100%" id="contact-header">
+<image src="../Images/contact.png" width="100%" id="contact-header">
 
 <div class="row">
   <div class="col-6">
