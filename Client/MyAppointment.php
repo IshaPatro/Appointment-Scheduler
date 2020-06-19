@@ -64,7 +64,7 @@
                     $image='../Images/customer-default.jpg';
                   ?>
 
-                  <p><img class="img-fluid" src="<?php echo htmlspecialchars($image); ?>"></p>
+                  <p style="padding-top:15%;"><img class="img-fluid" src="<?php echo htmlspecialchars($image); ?>"></p>
                 </div>
                 <div class="col-8">
                   <div class="row">
@@ -108,7 +108,7 @@
                     $image='../Images/customer-default.jpg';
                   ?>
 
-                  <p><img class="img-fluid" src="<?php echo htmlspecialchars($image); ?>"></p>
+                  <p style="padding-top:15%;"><img class="img-fluid" src="<?php echo htmlspecialchars($image); ?>"></p>
                 </div>
                 <div class="col-8">
                   <div class="row">
