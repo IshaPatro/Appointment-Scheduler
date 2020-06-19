@@ -12,6 +12,7 @@ $(window).scroll(function ()
     });
 
 // ------------------------------------------------------------------Login Page--------------------------------------------------------------------------------
+$(".client-login").hide();
 $(function() {
   $(".CustomerBox-btn").click(function() {
    $(".w40").addClass("active");
@@ -24,6 +25,8 @@ $(function() {
    $(".w60").addClass("active");
    $(".new-account-section").addClass("active");
    $(".sign-in-section").addClass("active");
+   $(".customer-login").hide();
+   $(".client-login").show();
   });
 });
 $(function() {
@@ -38,6 +41,8 @@ $(function() {
    $(".w60").addClass("shift-right");
    $(".new-account-section").removeClass("active");
    $(".sign-in-section").removeClass("active");
+   $(".client-login").hide();
+   $(".customer-login").show();
   });
 });
 

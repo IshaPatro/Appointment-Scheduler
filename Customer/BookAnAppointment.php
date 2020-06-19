@@ -26,13 +26,11 @@
 
 <!-- result -->
 <?php
-session_start();
-//	$appointer_id = isset($_GET['appointer_id'])?$_GET['appointer_id']:"";
-$appointer_id = $_GET['id'];
+  session_start();
+  $appointer_id = $_GET['id'];
   include('../connection.php');
 
-    $sql="SELECT * FROM `clientdata` WHERE Id =". $appointer_id;
-
+  $sql="SELECT * FROM `clientData` WHERE Id =". $appointer_id;
 
 	$result = $con->query($sql);
 	if ($result->num_rows > 0) {
@@ -174,72 +172,62 @@ $appointer_id = $_GET['id'];
 <?php
   include('../connection.php');
   if(isset($_POST['bookSubmit'])){
-$time=$_GET['time'];
-$date=$_POST['date'];
+  $time=$_GET['time'];
+  $date=$_POST['date'];
 
-$check="Select * from scheduler where apDate='".$date."' and ClientId='".$_GET['id']."';";
-//echo $check;
-$slot=trim($_GET['slot'],"Time ");
-$checkRes= mysqli_query($con,$check);
-$x=false;
-if(!$checkRes){
-$x=true;
-
-}else{
-
-  $row = mysqli_fetch_assoc($checkRes);
-
-  if($row[$slot]!=0){
-   // echo "not doen";
-    ?>
-<script>
-alert("This slot not available already taken!");
-</script>
-    <?php
-  }else{
+  $check="Select * from scheduler where apDate='".$date."' and ClientId='".$_GET['id']."';";
+  $slot=trim($_GET['slot'],"Time ");
+  $checkRes= mysqli_query($con,$check);
+  $x=false;
+  if(!$checkRes){
     $x=true;
-  }
+  }else{
+    $row = mysqli_fetch_assoc($checkRes);
 
-
-}
-//preg_replace('/^\p{Z}+|\p{Z}+$/u', '', $_GET['slot']);
-
-$query2 = "SELECT * FROM scheduler ORDER BY ID DESC LIMIT 1";
-$res = mysqli_query($con,$query2);
-$result1=mysqli_fetch_assoc($res);
-
-$count = $result1["Id"]+1;
-
-
-
-$sql1="insert into scheduler (Id,ClientId,apDate,".$slot.") values (".$count.",".$_GET['id'].",'".$date."','".$userid."');";
-//echo $sql1;
-if($x){
-
-  $query3 = "SELECT * FROM bookings ORDER BY BookId DESC LIMIT 1";
-  $res1 = mysqli_query($con,$query3);
-  $result2=mysqli_fetch_assoc($res1);
-
-  $count1 = $result2["BookId"]+1;
-
-  $sql = " INSERT INTO bookings (BookId,user_id,title,name,gender,dob,address,email,phn,service,appointer,appointer_id,adate,atime)
-    VALUES (".$count1.",". $userid. ",'" . $_POST["title"] . "','" . $_POST["name"] . "','" . $_POST["gender"] . "', '" . $_POST["dob"] . "','" . $_POST["address"] . "','". $_POST["email"] . "',". $_POST["number"] . ",'". $service . "','".$name."',".$_GET['id'].",'" . $_POST["date"] . "','". $_GET["time"] . "' )";
-echo $sql;
-    if (($con->query($sql) === TRUE) && ($con->query($sql1)) === TRUE) {
-        echo "<script>alert('Your booking has been accepted!');</script>";
-    } else {
-        echo "<script>alert('There was an Error')<script>";
+    if($row[$slot]!=0){
+     echo "not doen";
+?>
+<script>
+  alert("This slot not available already taken!");
+</script>
+<?php
+      }else{
+        $x=true;
+      }
     }
+    //preg_replace('/^\p{Z}+|\p{Z}+$/u', '', $_GET['slot']);
 
-if(mysqli_query($con,$sql1)){
- // echo "done1";
-}
-    $con->close();
-  }
-}
+    $query2 = "SELECT * FROM scheduler ORDER BY ID DESC LIMIT 1";
+    $res = mysqli_query($con,$query2);
+    $result1=mysqli_fetch_assoc($res);
+
+    $count = $result1["Id"]+1;
+
+    $sql1="insert into scheduler (Id,ClientId,apDate,".$slot.") values (".$count.",".$_GET['id'].",'".$date."','".$userid."');";
+    if($x){
+
+      $query3 = "SELECT * FROM bookings ORDER BY BookId DESC LIMIT 1";
+      $res1 = mysqli_query($con,$query3);
+      $result2=mysqli_fetch_assoc($res1);
+
+      $count1 = $result2["BookId"]+1;
+
+      $sql = " INSERT INTO bookings (BookId,user_id,title,name,gender,dob,address,email,phn,service,appointer,appointer_id,adate,atime)
+        VALUES (".$count1.",". $userid. ",'" . $_POST["title"] . "','" . $_POST["name"] . "','" . $_POST["gender"] . "', '" . $_POST["dob"] . "','" . $_POST["address"] . "','". $_POST["email"] . "',". $_POST["number"] . ",'". $service . "','".$name."',".$_GET['id'].",'" . $_POST["date"] . "','". $_GET["time"] . "' )";
+        if (($con->query($sql) === TRUE) && ($con->query($sql1)) === TRUE) {
+            echo "<script>alert('Your booking has been accepted!');</script>";
+        } else {
+            echo "<script>alert('There was an Error')<script>";
+        }
+
+    if(mysqli_query($con,$sql1)){
+    }
+        $con->close();
+      }
+    }
 ?>
 <!-- confirming booking -->
 
 <?php include('../footer.php'); ?>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>

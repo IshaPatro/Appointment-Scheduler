@@ -33,92 +33,85 @@
 <div class="container" id="login-form">
 
     <div class="w40">
-      <div class="CustomerBox active">
+      <div class="CustomerBox active"style="margin-left:15%;">
         <div class="text">
           <h3>Customer</h3>
-          <p>Easy, Flexible and Affordable solution to all your Appointment related queries at your fingertips</p>
+          <p>If you are a service provider, Click here</p>
         </div>
-        <button class="btn CustomerBox-btn cust-btn" onclick="set()" >Client</button>
+        <div class="bounce">
+          <i class="fa fa-angle-double-down" class="arrow"></i>
+        </div>
+        <button class="btn CustomerBox-btn cust-btn" onclick="set()" >Service Provider</button>
       </div>
       <div class="ClientBox">
         <div class="text">
-          <h3>Client</h3>
-          <p>Reach more potential clients with a free online booking site that automatically displays your services and availability.</p>
+          <h3 style="margin-top:40px;">Service Providers</h3>
+          <p>If you are a customer, Click here</p>
+        </div>
+        <div class="bounce">
+          <i class="fa fa-angle-double-down" class="arrow"></i>
         </div>
         <button class="btn ClientBox-btn cust-btn" onclick="set()">Customer</button>
       </div>
     </div>
 
     <div class="w60">
+      <h2 class="customer-login">Log-in as Customer</h2>
+      <h2 class="client-login">Log-in as Service Provider</h2>
 
     <?php
-    if(isset($_GET['log'])){
-?>
-<span class="red"><?php echo $_GET['log'];?> </span>
-<?php
-}
-else if(isset($_GET['data'])){
+      if(isset($_GET['log'])){
+    ?>
+    <span class="red"><?php echo $_GET['log'];?> </span>
+    <?php
+        }
+        else if(isset($_GET['data'])){
+    ?>
+    <span class="red"><?php echo $_GET['data']; ?></span>
+    <?php
+        } else if(isset($_GET['dbError'])){
+    ?>
+    <span class="red"><?php echo $_GET['dbError']; ?></span>
+    <?php
+        } else if(isset($_GET['empty'])){
+    ?>
+    <span class="red"><?php echo $_GET['empty']; ?></span>
+    <?php
+        }
     ?>
 
-<span class="red"><?php echo $_GET['data']; ?></span>
-
     <?php
-} else if(isset($_GET['dbError'])){
+      if(isset($_GET['match'])){
     ?>
-<span class="red"><?php echo $_GET['dbError']; ?></span>
+    <span class="red"><?php echo $_GET['match']; ?></span>
     <?php
-} else if(isset($_GET['empty'])){
+      } else if(isset($_GET['dbError'])){
     ?>
-<span class="red"><?php echo $_GET['empty']; ?></span>
+    <span class="red"><?php echo $_GET['dbError']; ?></span>
     <?php
-}
-
-
-?>
-
-<?php
-
- if(isset($_GET['match'])){
+      } else if(isset($_GET['empty1'])){
     ?>
-
-<span class="red"><?php echo $_GET['match']; ?></span>
-
+    <span class="red"><?php echo $_GET['empty1']; ?></span>
     <?php
-} else if(isset($_GET['dbError'])){
+      }else if(isset($_GET['log1'])){
     ?>
-<span class="red"><?php echo $_GET['dbError']; ?></span>
+    <span class="red"><?php echo $_GET['log1']; ?></span>
     <?php
-} else if(isset($_GET['empty1'])){
+      }else if(isset($_GET['dbFailed'])){
     ?>
-<span class="red"><?php echo $_GET['empty1']; ?></span>
+    <span class="red"><?php echo $_GET['dbFailed']; ?></span>
     <?php
-}else if(isset($_GET['log1'])){
+      }else if(isset($_GET['exist'])){
     ?>
-
-<span class="red"><?php echo $_GET['log1']; ?></span>
+      <span class="red"><?php echo $_GET['exist']; ?></span>
     <?php
-}else if(isset($_GET['dbFailed'])){
+      }
     ?>
-<span class="red"><?php echo $_GET['dbFailed']; ?></span>
-    <?php
-
-
-}else if(isset($_GET['exist'])){
-  ?>
-<span class="red"><?php echo $_GET['exist']; ?></span>
-    <?php
-
-
-}
-
-
-?>
 
 
 
     <div class="form-box">
       <div class="button-box">
-
         <div id="login-signup"></div>
               <button type="button" class="toggle-btn" onclick="login()">Login</button>
               <button type="button" class="toggle-btn" onclick="register()">Register</button>

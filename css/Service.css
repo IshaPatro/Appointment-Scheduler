@@ -1,4 +1,27 @@
+button {
+  border-color:  #fff;
+  color: #fff;
+  width: auto;
+  background: #3498db;
+  font-size: 20px;
+  padding:auto;
+  border-radius: 45px;
+  cursor: pointer;
+  float:right;
+  margin-top:8%;
+  height:50px;
+}
+  button:hover {
+      box-shadow: 0 0 10px 40px  #22232a inset, 0 0 10px 4px  #3498db;
+      color: #656d79;
+  }
+}
+
 /* start cards */
+.detailButton{
+  cursor:pointer;
+}
+
 .doc-cards {
   overflow: hidden;
   margin-bottom:5%;
@@ -125,13 +148,16 @@
   cursor: pointer;
   outline:none;
   background-color: #999999;
-  margin-left:20%;
+  margin-left:10%;
+  margin-right:10%;
   justify-content: center;
   box-shadow: 10px 10px 5px 5px #222222;
 }
 .service-btn:hover, .service-btn:active, .service-btn:visited{
   background-color: #28a7e9;
   outline:none;
+  box-shadow: none;
+  color: #656d79;
 }
 .service-txt{
   font-family: 'Lobster', cursive;
@@ -139,6 +165,7 @@
   text-align: center;
   margin-top:2%;
   margin-bottom:15%;
+  margin-left:25%;
 }
 /* start button */
 .btn{

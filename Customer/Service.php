@@ -118,12 +118,6 @@
           while($row = mysqli_fetch_assoc($result)) {
       ?>
 
-<style>
-.detailButton{
-  cursor:pointer;
-}
-</style>
-
         <!-- start Doctor -->
         <div class="col-xs-11 col-sm-5 col-md-3" style="float:left; margin-left:5%;">
             <div class="image-flip">
@@ -218,80 +212,54 @@
         <!-- end Doctor -->
 
 <script>
-var time;
-var slot;
-var timeButton = document.getElementsByClassName("timeBtn");
-for(var i=0;i<timeButton.length;i++){
-  timeButton[i].addEventListener("click",function(){
-     slot=(this).dataset.slot;
-time=this.innerHTML;
-console.log(time);
-  });
-}
+    var time;
+    var slot;
+    var timeButton = document.getElementsByClassName("timeBtn");
+    for(var i=0;i<timeButton.length;i++){
+      timeButton[i].addEventListener("click",function(){
+         slot=(this).dataset.slot;
+    time=this.innerHTML;
+    console.log(time);
+      });
+    }
+
+    var btn = document.getElementsByClassName("detailButton");
+
+    for(var i=0;i<btn.length;i++){
+        btn[i].addEventListener("click",function(){
+          console.log(this);
+    var id= (this).dataset.id;
+
+    if(time!==undefined){
+    window.location='./BookAnAppointment.php?id='+id+'&time='+time+'&slot='+slot;
+    }else{
+    alert('Please select time!');
+    }
+        });
+    }
 
 
+    var service = document.getElementsByClassName("service-btn");
 
-var btn = document.getElementsByClassName("detailButton");
+    for(var i=0;i<service.length;i++){
+      service[i].addEventListener("click",function(){
+        console.log(this.nextElementSibling.innerText);
+        window.location.href='Service.php?select='+(this).nextElementSibling.innerText;
 
-for(var i=0;i<btn.length;i++){
-    btn[i].addEventListener("click",function(){
-      console.log(this);
-var id= (this).dataset.id;
-
-if(time!==undefined){
-window.location='./BookAnAppointment.php?id='+id+'&time='+time+'&slot='+slot;
-}else{
-alert('Please select time!');
-}
-    });
-}
+      });
+    }
 
 
-var service = document.getElementsByClassName("service-btn");
+    var btnText = document.getElementsByClassName("btn-text");
 
-for(var i=0;i<service.length;i++){
-  service[i].addEventListener("click",function(){
-    console.log(this.nextElementSibling.innerText);
-    window.location.href='Service.php?select='+(this).nextElementSibling.innerText;
-
-  });
-}
-
-
-var btnText = document.getElementsByClassName("btn-text");
-
-for(var i=0;i<btnText.length;i++){
-  var temp=btnText[i].children;
-  for(var j=0;j<temp.length;j++){
-    var temp2=btnText[i].nextElementSibling.dataset.id;
-    temp[j].addEventListener("click",function(){
-      console.log(this);
-      window.location='./BookAnAppointment.php?time='+(this).innerHTML+"&id="+temp2;
-    })
-  }
-}
-
-
-
-
+    for(var i=0;i<btnText.length;i++){
+      var temp=btnText[i].children;
+      for(var j=0;j<temp.length;j++){
+        var temp2=btnText[i].nextElementSibling.dataset.id;
+        temp[j].addEventListener("click",function(){
+          console.log(this);
+          window.location='./BookAnAppointment.php?time='+(this).innerHTML+"&id="+temp2;
+        })
+      }
+    }
 </script>
-
-<style>{
-  button {
-    border-color:  #fff;
-    color: #fff;
-    width: auto;
-    background: #3498db;
-    font-size: 20px;
-    padding:auto;
-    border-radius: 45px;
-    cursor: pointer;
-    float:right;
-    margin-top:8%;
-    height:50px;
-  }
-  button:hover {
-      box-shadow: 0 0 10px 40px  #22232a inset, 0 0 10px 4px  #3498db;
-      color: #656d79;
-  }
-}

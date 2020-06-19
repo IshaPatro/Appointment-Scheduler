@@ -49,18 +49,6 @@
         <form action="" class="my-form" method="post" enctype="multipart/form-data" action="upload.php">
           <h2 class="font-weight-bold mb-3 " style="color:#000;">UPDATE YOUR <span style="color:#28a7e9;">PROFILE</span></h2>
 
-					<!-- <div class="d-flex justify-content-center">
-						<div class="profile-pic" style="background-image: url('../Images/Clients/<?php echo @$pic; ?>')" >
-								<span class="fa fa-photo"></span>
-			      		<span>Change Image</span>
-						</div>
-						<label>
-							 <input type="file" id="file"/>
-							 <button type="submit" name="upload">UPLOAD</button>
-							 </label>
-					</div> -->
-
-
           <div class="row">
 						<div class="col">
 							<label style="color:black;">
