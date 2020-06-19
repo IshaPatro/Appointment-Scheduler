@@ -110,7 +110,7 @@
           $select="Doctor";
         }
       if($data){
-        $query ="select * from `clientData` where Service='".$select."';";
+        $query ="select * from `clientdata` where Service='".$select."';";
         // echo $query;
         $result = mysqli_query($con,$query);
 
