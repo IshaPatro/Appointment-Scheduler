@@ -29,6 +29,8 @@
 }
 </style>
 
+<h2 class="heading">SELECT THE SERVICES BELOW</h2>
+
 <div class="row">
   <div class="col">
     <div class="services">
@@ -94,8 +96,9 @@
   </div>
 </div>
 
-
-
+<br><br><br><br>
+<h2 class="heading">SELECT THE SERVICE PROVIDER AND TIME SLOT WHICH SUITS YOU THE BEST</h2>
+<br><br>
 
 <script>
 
@@ -111,7 +114,7 @@
           $select="Doctor";
         }
         if($data){
-          $query ="select * from `clientdata` where Service='".$select."';";
+          $query ="select * from `clientData` where Service='".$select."';";
           // echo $query;
           $result = mysqli_query($con,$query);
 
